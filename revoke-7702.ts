@@ -1,5 +1,4 @@
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import "dotenv/config";
 import {
   createWalletClient,
   createPublicClient,
@@ -8,23 +7,6 @@ import {
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { sepolia } from "viem/chains";
-
-// Load .env manually for Node.js compatibility (Bun loads it automatically)
-if (!process.env.HIJACKED_PRIVATE_KEY) {
-  try {
-    const envPath = resolve(import.meta.dirname ?? ".", ".env");
-    const envContent = readFileSync(envPath, "utf-8");
-    for (const line of envContent.split("\n")) {
-      const trimmed = line.trim();
-      if (!trimmed || trimmed.startsWith("#")) continue;
-      const eqIndex = trimmed.indexOf("=");
-      if (eqIndex === -1) continue;
-      const key = trimmed.slice(0, eqIndex).trim();
-      const value = trimmed.slice(eqIndex + 1).trim();
-      if (!process.env[key]) process.env[key] = value;
-    }
-  } catch {}
-}
 
 const { HIJACKED_PRIVATE_KEY, SENDER_PRIVATE_KEY, RPC_URL } = process.env;
 
