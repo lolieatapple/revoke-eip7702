@@ -1,10 +1,13 @@
 {
-  "name": "security",
-  "module": "index.ts",
+  "name": "revoke-eip7702",
   "type": "module",
   "private": true,
+  "scripts": {
+    "revoke": "npx tsx revoke-7702.ts"
+  },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "tsx": "^4.19.0"
   },
   "peerDependencies": {
     "typescript": "^5"

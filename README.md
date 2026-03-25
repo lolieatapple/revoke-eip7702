@@ -21,22 +21,30 @@ The key trick: **the authorization is signed by the hijacked address, but the tr
 
 ## Prerequisites
 
-- [Bun](https://bun.sh) runtime
+- [Bun](https://bun.sh) or [Node.js](https://nodejs.org) (v18+)
 - The private key of the hijacked address
 - A separate address with Sepolia ETH (for gas)
 
 ## Usage
 
 ```bash
-# Install dependencies
-bun install
-
 # Copy and configure environment variables
 cp .env.example .env
 # Edit .env with your private keys and RPC URL
+```
 
-# Run the revoke script
+### With Bun
+
+```bash
+bun install
 bun revoke-7702.ts
+```
+
+### With Node.js
+
+```bash
+npm install
+npm run revoke
 ```
 
 ## Environment Variables
